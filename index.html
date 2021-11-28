@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title> find kuku </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .rows {
+      display: flex;
+    }
+  </style>
+  <script>
+    let start, end = false;
+    function init() {
+      let rows = 20;
+      let cols = 10;
+      let row = Math.ceil(Math.random() * rows);
+      let col = Math.ceil(Math.random() * cols);
+      for (let i = 1; i <= rows; i++) {
+        document.write('<div class="rows">');
+        for (let j = 1; j <= cols; j++) {
+          if (i == row && j == col) {
+            document.write('<img src="./kuku.jpg" onclick="win()">');
+          }
+          else {
+            document.write('<img src="./kotori.jpg">');
+          }
+        }
+        document.write("</div>");
+      }
+      start = new Date().getTime();
+    }
+    function win() {
+      // alert('qwq');
+      if (end) return;
+      end = new Date().getTime();
+      let time = end - start;
+      time = time / 1000;
+      document.getElementById("result").style.display = "block";
+      document.getElementById("time").innerHTML = "恭喜找到可可，用时 " + time + " s!";
+    }
+  </script>
+</head>
+
+<body>
+  <div style="display: inline-block;">
+    <div style="display: flex; justify-content: space-around;">
+      <h1>
+        寻找唐可可
+      </h1>
+    </div>
+    <div>
+    <script>
+      init();
+    </script>
+    </div>
+    <div id="result" style="display: none;">
+      <h1 id="time">
+      </h1>
+      <button onclick="location.reload()">
+        重新开始
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>
